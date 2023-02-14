@@ -25,13 +25,8 @@
             "styles": [
               "src/styles.css",
               {
-                "input": "src/styles/themes/light.css",
-                "bundleName": "light-mode-css",
-                "inject": false
-              },
-              {
-                "input": "src/styles/themes/dark.css",
-                "bundleName": "dark-mode-css",
+                "input": "src/assets/css/mobile.css",
+                "bundleName": "mobile-css",
                 "inject": false
               }
             ],

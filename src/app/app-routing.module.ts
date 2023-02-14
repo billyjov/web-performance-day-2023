@@ -19,6 +19,13 @@ const routes: Route[] = [
     component: HomeComponent,
   },
   {
+    path: 'standalone',
+    loadComponent: () =>
+      import('./features/standalone-sticker/standalone-sticker.component').then(
+        (m) => m.StandaloneStickerComponent
+      ),
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',
