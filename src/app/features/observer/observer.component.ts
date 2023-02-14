@@ -26,7 +26,15 @@ export class ObserverComponent implements OnInit {
 
   ngOnInit(): void {
     this.lazyRenderObserverChild();
+  }
 
+  public downloadExcelFile(): void {
+    import(
+      /* webpackChunkName: 'xlsx-bundle-random-name' */
+      'xlsx'
+    ).then((xlsx) => {
+      console.log('👀', xlsx);
+    });
   }
 
   private lazyRenderObserverChild(): void {
@@ -64,7 +72,6 @@ export class ObserverComponent implements OnInit {
 
     // LOAD EVERYTIME
     // document.head.appendChild(link);
-
 
     // LOAD ONLY ONCE
     // if (!document.head.querySelector(`link[href="${link.href}"]`)) {
