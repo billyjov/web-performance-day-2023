@@ -26,6 +26,7 @@ export class ObserverComponent implements OnInit {
 
   ngOnInit(): void {
     this.lazyRenderObserverChild();
+
   }
 
   private lazyRenderObserverChild(): void {
@@ -37,6 +38,9 @@ export class ObserverComponent implements OnInit {
         if (entry.isIntersecting) {
           observer.disconnect();
           this.loadObserverChild();
+
+          // Render CSS
+          this.renderCss();
         }
       });
     });
@@ -50,5 +54,21 @@ export class ObserverComponent implements OnInit {
     );
 
     this.observerChildContainerRef.createComponent(ObserverChildComponent);
+  }
+
+  private renderCss(): void {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '/assets/css/mobile.css';
+
+    // LOAD EVERYTIME
+    // document.head.appendChild(link);
+
+
+    // LOAD ONLY ONCE
+    // if (!document.head.querySelector(`link[href="${link.href}"]`)) {
+    //   document.head.appendChild(link);
+    // }
   }
 }
