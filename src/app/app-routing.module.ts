@@ -26,6 +26,13 @@ const routes: Route[] = [
       ),
   },
   {
+    path: 'observer',
+    loadComponent: () =>
+      import('./features/observer/observer.component').then(
+        (m) => m.ObserverComponent
+      ),
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',
