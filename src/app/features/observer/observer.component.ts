@@ -6,6 +6,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-observer',
@@ -66,15 +67,23 @@ export class ObserverComponent implements OnInit {
 
   private renderCss(): void {
     const link = document.createElement('link');
+
+    // 🚔 DON'T CARE ABOUT REAL PATH
+    const stylePath = '/assets/css/mobile-css.css';
+    // const stylePath = '/mobile-css.css';
+
+    // CACHING ????
+    // const stylePath = `/mobile-css.css?${new Date().getTime()}`;
+    // const stylePath = `/mobile-css.css?${environment.cssHash}`;
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    link.href = '/assets/css/mobile.css';
+    link.href = stylePath;
 
     // LOAD EVERYTIME
     // document.head.appendChild(link);
 
     // LOAD ONLY ONCE
-    // if (!document.head.querySelector(`link[href="${link.href}"]`)) {
+    // if (!document.head.querySelector(`link[href="${stylePath}"]`)) {
     //   document.head.appendChild(link);
     // }
   }
